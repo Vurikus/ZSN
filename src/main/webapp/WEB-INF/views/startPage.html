@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>List unemployed</title>
+</head>
+<body>
+    <div th:if="${listAllPerson != null}">
+        <h2>List unemployed</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person:${listAllPerson}">
+                <td th:text="${person.name}"></td>
+                <td th:text="${person.surname}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a th:href="${'/registration'}">Registration</a>
+</body>
+</html>

@@ -1,8 +1,8 @@
-package model;
+package web.model;
 
 import java.time.LocalDate;
 
-public class Unemployed extends Person {
+public class Unemployed extends web.model.Person {
     //Field
     private LocalDate regDateZSN;
     private float amountBenefit;
@@ -11,11 +11,11 @@ public class Unemployed extends Person {
     public Unemployed() {
     }
 
-    public Unemployed(String name, String surname, String patronymic, int age, Passport passport, Address address, LocalDate regDateZSN, float amountBenefit) {
-        super(name, surname, patronymic, age, passport, address);
-        this.regDateZSN = regDateZSN;
-        this.amountBenefit = amountBenefit;
-    }
+//    public Unemployed(String name, String surname, String patronymic, int age, web.model.Passport passport, web.model.Address address, LocalDate regDateZSN, float amountBenefit) {
+//        super(name, surname, patronymic, age, passport, address);
+//        this.regDateZSN = regDateZSN;
+//        this.amountBenefit = amountBenefit;
+//    }
 
 
     //Function
