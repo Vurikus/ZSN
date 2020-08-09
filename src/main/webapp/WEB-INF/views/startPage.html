@@ -10,14 +10,20 @@
         <table>
             <thead>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Surname</th>
+                <th>Patronymic</th>
+                <th>Age</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="person:${listAllPerson}">
+                <td th:text="${person.idPerson}"></td>
                 <td th:text="${person.name}"></td>
                 <td th:text="${person.surname}"></td>
+                <td th:text="${person.patronymic}"></td>
+                <td th:text="${person.age}"></td>
             </tr>
             </tbody>
         </table>

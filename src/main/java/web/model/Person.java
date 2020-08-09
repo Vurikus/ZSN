@@ -35,6 +35,14 @@ public class Person {
         this.age = age;
     }
 
+    public Person(int idPerson, String name, String surname, String patronymic, int age) {
+        this.idPerson = idPerson;
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.age = age;
+    }
+
 //    public Person(String name, String surname, String patronymic, int age, Passport passport, Address address) {
 //        this.name = name;
 //        this.surname = surname;

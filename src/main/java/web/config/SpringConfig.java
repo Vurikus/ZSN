@@ -5,7 +5,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -15,9 +17,12 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
+import javax.sql.DataSource;
+
 @Configuration
 @ComponentScan("web")
 @EnableWebMvc
+//@PropertySource("/resources/config.properties")
 public class SpringConfig implements WebMvcConfigurer {
     //Field
     private final ApplicationContext applicationContext;
@@ -66,5 +71,14 @@ public class SpringConfig implements WebMvcConfigurer {
         return resolver;
     }
 
+    @Bean
+    public DriverManagerDataSource managerDataSource(){
+        DriverManagerDataSource manager = new DriverManagerDataSource();
+        manager.setDriverClassName("org.postgresql.Driver");
+        manager.setUrl("jdbc:postgresql://localhost:5432/postgres");
+        manager.setUsername("postgres");
+        manager.setPassword("123");
+        return manager;
+    }
 
 }

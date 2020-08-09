@@ -3,9 +3,10 @@ package web.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import web.model.Passport;
 import web.model.Person;
 import web.service.RegisterService;
 
@@ -17,6 +18,7 @@ public class RegisterController {
     @Autowired
     private RegisterService registerService;
 
+
     //Function
     @GetMapping("/start")
     public String startPage(Model model){
@@ -26,15 +28,16 @@ public class RegisterController {
 
     @GetMapping("/registration")
     public String registration(){
-
         return "register";
     }
 
     @PostMapping("/registration")
     public String registrationUnemployed(@RequestParam(value = "name") String name,
                                          @RequestParam(value = "surname") String surname,
+                                         @RequestParam(value = "patronymic") String patronymic,
+                                         @RequestParam(value = "age") int age,
                                          Model model){
-        registerService.addPerson(new Person(name, surname, "as", 12));
+        registerService.addPerson(new Person(name, surname, patronymic, age));
         return "regSuccess";
     }
 
