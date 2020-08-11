@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -17,7 +19,10 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
+import javax.mail.MessagingException;
+import javax.net.ssl.SSLSocketFactory;
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @ComponentScan("web")
@@ -80,5 +85,21 @@ public class SpringConfig implements WebMvcConfigurer {
         manager.setPassword("123");
         return manager;
     }
-
+//
+//    @Bean
+//    public JavaMailSenderImpl mailSender(){
+//        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+//        mailSender.setUsername("centrzan23@gmail.com");
+//        mailSender.setPassword("1234Qwer!");
+//        mailSender.setPort(465);
+//        mailSender.setHost("smtp.gmail.com");
+//        Properties properties = new Properties();
+//        properties.setProperty("mail.smtp.auth", String.valueOf(true));
+//        properties.setProperty("mail.smtp.starttls.enable", String.valueOf(true));
+//        properties.setProperty("mail.smtp.starttls.required", String.valueOf(true));
+//        properties.setProperty("mail.smtp.socketFactory.class", new SSLSocketFactory());
+//        properties.setProperty("mail.smtp.host", "smtp.gmail.com");
+//        mailSender.setJavaMailProperties();
+//        return mailSender();
+//    }
 }
