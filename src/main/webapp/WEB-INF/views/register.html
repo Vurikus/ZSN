@@ -6,18 +6,28 @@
 </head>
 <body>
     <h1>Registration unemployed</h1>
+    <br/>
+    <h4>Enter your details</h4>
     <form method="post">
         <label>Name:
-            <input type="text" name="name"><br />
+            <input type="text" name="name" required data-validation-required-message="Please enter your name">
+            <br/>
         </label>
         <label>Surname:
-            <input type="text" name="surname"><br />
+            <input type="text" name="surname" required data-validation-required-message="Please enter your surname">
+            <br />
         </label>
         <label>Patronymic:
-            <input type="text" name="patronymic"><br />
+            <input type="text" name="patronymic" required data-validation-required-message="Please enter your patronymic">
+            <br />
         </label>
         <label>Age:
-            <input type="text" name="age"><br />
+            <input type="text" name="age" required data-validation-required-message="Please enter your age">
+            <br />
+        </label>
+        <label>Email:
+            <input type="email" name="email" required data-validation-required-message="Please enter your email">
+            <br />
         </label>
         <button type="submit">Registration citizen</button>
     </form>

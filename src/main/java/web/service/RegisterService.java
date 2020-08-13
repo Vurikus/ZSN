@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class RegisterService implements IRegisterService{
     //Field
-    @Qualifier("JDBCRepository")
+    @Qualifier("ORMRepository")
     @Autowired
     private IRegisterDAO registerDAO;
 

@@ -76,30 +76,4 @@ public class SpringConfig implements WebMvcConfigurer {
         return resolver;
     }
 
-    @Bean
-    public DriverManagerDataSource managerDataSource(){
-        DriverManagerDataSource manager = new DriverManagerDataSource();
-        manager.setDriverClassName("org.postgresql.Driver");
-        manager.setUrl("jdbc:postgresql://localhost:5432/postgres");
-        manager.setUsername("postgres");
-        manager.setPassword("123");
-        return manager;
-    }
-//
-//    @Bean
-//    public JavaMailSenderImpl mailSender(){
-//        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-//        mailSender.setUsername("centrzan23@gmail.com");
-//        mailSender.setPassword("1234Qwer!");
-//        mailSender.setPort(465);
-//        mailSender.setHost("smtp.gmail.com");
-//        Properties properties = new Properties();
-//        properties.setProperty("mail.smtp.auth", String.valueOf(true));
-//        properties.setProperty("mail.smtp.starttls.enable", String.valueOf(true));
-//        properties.setProperty("mail.smtp.starttls.required", String.valueOf(true));
-//        properties.setProperty("mail.smtp.socketFactory.class", new SSLSocketFactory());
-//        properties.setProperty("mail.smtp.host", "smtp.gmail.com");
-//        mailSender.setJavaMailProperties();
-//        return mailSender();
-//    }
 }

@@ -2,21 +2,21 @@ package web.model;
 
 import javax.persistence.*;
 
-//@Entity
-//@Table(name="person")
+@Entity
+@Table(name="person")
 public class Person {
     //Field
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name="id_person")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_person")
     private int idPerson;
-//    @Column(name="name")
+    @Column(name="name")
     private String name;
-//    @Column(name="surname")
+    @Column(name="surname")
     private String surname;
-//    @Column(name="patronymic")
+    @Column(name="patronymic")
     private String patronymic;
-//    @Column(name="age")
+    @Column(name="age")
     private int age;
     //@OneToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
     //@JoinColumn(name = "person_id")
@@ -95,19 +95,4 @@ public class Person {
         this.age = age;
     }
 
-//    public web.model.Passport getPassport() {
-//        return passport;
-//    }
-//
-//    public void setPassport(web.model.Passport passport) {
-//        this.passport = passport;
-//    }
-//
-//    public web.model.Address getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(web.model.Address address) {
-//        this.address = address;
-//    }
 }
