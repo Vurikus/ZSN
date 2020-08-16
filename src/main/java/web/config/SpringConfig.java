@@ -27,7 +27,6 @@ import java.util.Properties;
 @Configuration
 @ComponentScan("web")
 @EnableWebMvc
-//@PropertySource("/resources/config.properties")
 public class SpringConfig implements WebMvcConfigurer {
     //Field
     private final ApplicationContext applicationContext;

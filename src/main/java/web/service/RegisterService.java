@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import web.dao.IRegisterDAO;
-import web.dao.TESTRegisterDAO;
-import web.dao.JDBCRepository;
 import web.model.Person;
 
 import java.util.List;
