@@ -18,30 +18,53 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("SELECT USERNAME, PASSWORD, ENABLED FROM USER WHERE USERNAME=?")
-                .authoritiesByUsernameQuery("SELECT U.USERNAME, A.AUTHORITY\n" +
-                        "        \t FROM AUTHORITIES A, USER U WHERE U.USERNAME = A.USERNAME AND U.USERNAME = ?");;
+        auth.inMemoryAuthentication()
+                .withUser("user").password("password").roles("USER")
+                .and()
+                .withUser("admin").password("password").roles("ADMIN");
+//    }
+//
+//        auth.jdbcAuthentication().dataSource(dataSource)
+//                .usersByUsernameQuery("SELECT * FROM USERS WHERE login=?")
+//                .authoritiesByUsernameQuery("SELECT U.login, A.AUTHORITY\n" +
+//                        "\t FROM AUTHORITIES A, USER U WHERE U.login = A.login AND U.login = ?");;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-//                .anyRequest().authenticated() //all requests will checked
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/", "/start").permitAll()
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/user/**").hasAnyRole("USER")
+                .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login.html").permitAll().usernameParameter("j_username")
-                .passwordParameter("j_password").loginProcessingUrl("/j_spring_security_check").failureUrl("/login.html?error=true")
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
                 .and()
-                .httpBasic()
+                .logout()
+                .permitAll()
                 .and()
-                .authorizeRequests().antMatchers("/security/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("USER")
-                .and()
-                .logout().logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/")
-                .and()
-                .rememberMe().key("myKey").tokenValiditySeconds(300)
-                .and()
-                .csrf().disable();
-
+                .rememberMe().key("myKey").tokenValiditySeconds(300);
     }
+
+
+
+//        http.authorizeRequests()
+//                .and()
+//                .formLogin().loginPage("/login.html").permitAll().usernameParameter("j_username")
+//                .passwordParameter("j_password").loginProcessingUrl("/j_spring_security_check").failureUrl("/login.html?error=true")
+//                .and()
+//                .httpBasic()
+//                .and()
+//                .authorizeRequests().antMatchers("/security/**").hasRole("ADMIN")
+//                .antMatchers("/user/**").hasRole("USER")
+//                .and()
+//                .logout().logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/")
+//                .and()
+//                .rememberMe().key("myKey").tokenValiditySeconds(300)
+//                .and()
+//                .csrf().disable();
+
 }

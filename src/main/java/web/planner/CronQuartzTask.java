@@ -15,6 +15,6 @@ public class CronQuartzTask {
 
 
     public void cronTaskMethod() {
-        emailService.sendMail(email, subject, message);
+        //emailService.sendMail(email, subject, message);
     }
 }
