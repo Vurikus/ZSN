@@ -29,8 +29,12 @@
         </table>
     </div>
 
-    <a th:href="${'/registration'}">Registration</a>
+    <a th:href="${'/worker/registration'}">Registration</a>
     <br/>
-    <a th:href="${'/registration/pdf'}">Load all person PDF-format</a>
+    <a th:href="${'/worker/registration/pdf'}">Load all person PDF-format</a>
+
+    <div>
+        <th:block th:include="templates/footer"></th:block>
+    </div>
 </body>
 </html>

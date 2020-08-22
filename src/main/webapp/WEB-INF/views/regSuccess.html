@@ -7,9 +7,12 @@
 <body>
     <p>Registration completed</p>
     <br/>
-    <a th:href="${'/registration/pdf'}">Load all person PDF-format</a>
+    <a th:href="${'/worker/registration/pdf'}">Load all person PDF-format</a>
     <br/>
     <a th:href="${'/start'}">Return start page</a>
 
+    <div>
+        <th:block th:include="templates/footer"></th:block>
+    </div>
 </body>
 </html>

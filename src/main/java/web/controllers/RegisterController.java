@@ -24,18 +24,18 @@ public class RegisterController {
 
 
     //Function
-    @GetMapping("/start")
+    @GetMapping({"/","/start"})
     public String startPage(Model model){
         model.addAttribute("listAllPerson", registerService.getAllPerson());
         return "startPage";
     }
 
-    @GetMapping("/registration")
+    @GetMapping("/worker/registration")
     public String registration(){
         return "register";
     }
 
-    @PostMapping("/registration")
+    @PostMapping("/worker/registration")
     public String registrationUnemployed(@RequestParam(value = "name") String name,
                                          @RequestParam(value = "surname") String surname,
                                          @RequestParam(value = "patronymic") String patronymic,
@@ -47,7 +47,7 @@ public class RegisterController {
         return "regSuccess";
     }
 
-    @GetMapping("/registration/pdf")
+    @GetMapping("/worker/registration/pdf")
     public ModelAndView pdf() {
         System.out.println("ExcelPDFController pdf is called");
         List<Person> list = registerService.getAllPerson();

@@ -12,40 +12,32 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private DriverManagerDataSource dataSource;
-
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER")
+                .withUser("user").password("password").roles("UNEMPLOYED")
                 .and()
-                .withUser("admin").password("password").roles("ADMIN");
-//    }
-//
-//        auth.jdbcAuthentication().dataSource(dataSource)
-//                .usersByUsernameQuery("SELECT * FROM USERS WHERE login=?")
-//                .authoritiesByUsernameQuery("SELECT U.login, A.AUTHORITY\n" +
-//                        "\t FROM AUTHORITIES A, USER U WHERE U.login = A.login AND U.login = ?");;
+                .withUser("admin").password("password").roles("ADMIN")
+                .and()
+                .withUser("worker1").password("123").roles("WORKER");;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/start").permitAll()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
+                    .antMatchers("/", "/start").permitAll()
+                    .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                    .antMatchers("/worker/**").hasAnyRole("WORKER")
+                    .antMatchers("/unemployed/**").hasAnyRole("UNEMPLOYED")
+                    .anyRequest().authenticated();
+        http.formLogin()
                 .loginPage("/login")
                 .permitAll()
                 .and()
-                .logout()
+             .logout()
                 .permitAll()
-                .and()
+             .and()
                 .rememberMe().key("myKey").tokenValiditySeconds(300);
     }
 

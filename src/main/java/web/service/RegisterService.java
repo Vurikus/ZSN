@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class RegisterService implements IRegisterService{
     //Field
-    @Qualifier("ORMRepository")
+    @Qualifier("JDBCRepository")
     @Autowired
     private IRegisterDAO registerDAO;
 
