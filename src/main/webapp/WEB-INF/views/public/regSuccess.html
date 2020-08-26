@@ -3,13 +3,17 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Title</title>
+
 </head>
 <body>
-    <p>Registration completed</p>
+    <div>
+        <th:block th:include="templates/header"></th:block>
+    </div>
+
+    <h4>Registration completed!</h4>
+    <p>You can check status your registration in personal account. Login is your email, password sent to mail</p>
     <br/>
-    <a th:href="${'/worker/registration/pdf'}">Load all person PDF-format</a>
-    <br/>
-    <a th:href="${'/start'}">Return start page</a>
+    <a th:href="${'/'}">Return start page</a>
 
     <div>
         <th:block th:include="templates/footer"></th:block>

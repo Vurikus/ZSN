@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
 @Configuration
 @EnableWebSecurity
@@ -26,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/", "/start").permitAll()
+                    .antMatchers("/", "/public/**", "/registration/**").permitAll()
                     .antMatchers("/admin/**").hasAnyRole("ADMIN")
                     .antMatchers("/worker/**").hasAnyRole("WORKER")
                     .antMatchers("/unemployed/**").hasAnyRole("UNEMPLOYED")
@@ -59,4 +60,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .csrf().disable();
 
+}
+
+class SpringSecurityInit extends AbstractSecurityWebApplicationInitializer {
+    //Field
+
+    //Constructor
+
+    //Function
+
+    //Getter and Setter
 }

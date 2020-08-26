@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+</head>
+<body>
+    <div>
+        <th:block th:include="templates/header"></th:block>
+    </div>
+
+    <h2>Welcome to ZSN</h2>
+    <h3>Registration as unemployed</h3>
+
+    <p>If you lose some job, you can make registration as unemployed. You need passport, workbook.</p>
+    <a th:href="${'/registration/list'}">    Go registration</a>
+    <br/>
+    <a th:href="${'/public/documentation'}">Documentation</a>
+    <br/>
+    <a th:href="${'/public/contact'}">Contact</a>
+    <br/>
+
+</body>
+</html>

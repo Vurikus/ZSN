@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+</head>
+<body>
+    <div>
+        <th:block th:include="templates/header"></th:block>
+    </div>
+
+    <h2>Contact</h2>
+
+    <p>Address: Krasnodar city, Turgeneva street, building 82</p>
+    <p>Phone:</p>
+    <ul>
+        <li>8(861)222-222 - Reception</li>
+        <li>8(861)222-333 - Lead inspector</li>
+        <li>8(861)222-444 - Counting department</li>
+    </ul>
+    <p>Email: centrzan23@gmail.com</p>
+
+    <a th:href="${'/'}">Return start page</a>
+
+</body>
+</html>
